@@ -28,8 +28,6 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.AudioAttributes
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -54,7 +52,13 @@ class MainActivity : AppCompatActivity() {
 
     // Initialize arrays
     private val glassAmounts = mutableListOf(0, 0, 0, 0, 0) // 0 -> full, 4 -> empty
-    private val glassLevels = listOf(R.drawable.glass100, R.drawable.glass75, R.drawable.glass50, R.drawable.glass25, R.drawable.glass0)
+    private val glassLevels = listOf(
+        R.drawable.glass100,
+        R.drawable.glass75,
+        R.drawable.glass50,
+        R.drawable.glass25,
+        R.drawable.glass0
+    )
 
     // Declare other object instances
     private var prefs: SharedPreferences? = null
