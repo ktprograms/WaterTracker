@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ GNU General Public License v3
+  ~
+  ~ Copyright (c) 2020 Toh Jeen Gie Keith
+  ~
+  ~
+  ~ This file is part of WaterTracker.
+  ~
+  ~ WaterTracker is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ WaterTracker is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with WaterTracker.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ktprograms.watertracker">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/water_drop"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/water_drop"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WaterTracker"
+        >
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".AlarmReceiver" />
+    </application>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+</manifest>
