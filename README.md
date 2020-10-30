@@ -45,7 +45,17 @@ When all 5 glasses are empty, the notifications will no longer come (until you r
 >
 >SHA1: b6d073a36f325499386d290d4dab75c5b03e4b3c
 
+**V 0.1.1 Beta:**
+
+>MD5: b196939cc8cd0c5c28c1cf8059149746
+>
+>SHA1: 88fe561d635a015d816af3593e86df009e11285a
+
 # Changelogs
 **V 0.1.0 Beta:**
 
 >Initial release
+
+**V 0.1.1 Beta:**
+
+>Fixed bug where 'running' text would change to 'not running' when screen is locked then unlocked
