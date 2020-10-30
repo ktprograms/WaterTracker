@@ -33,8 +33,8 @@ android {
         applicationId "com.ktprograms.watertracker"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "0.1.0-beta"
+        versionCode 2
+        versionName "0.1.1-beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

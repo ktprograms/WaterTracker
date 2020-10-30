@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
         if (intent.hasExtra("com.ktprograms.watertracker.NOTIFEXTRA")) {
             putRunning(false)
             alarmTextView!!.text = "Water alarm is currently not running"
+            intent.removeExtra("com.ktprograms.watertracker.NOTIFEXTRA")
         }
 
         // Set glass onClick listeners
