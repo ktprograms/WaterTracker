@@ -1,0 +1,7 @@
+<i>WaterTracker</i> ist eine einfache App die Dich daran erinnert, Wasser zu trinken.
+
+Um zu 'trinken', einfach eines der Gläser antippen. Mit jedem Antippen werden die Gläser geleert. Ein Alarm in der von Dir eingestellten Länge wird bei jedem Antippen neu eingestellt.
+
+Eine 'Trink Wasser!' Benachrichtigung erscheint, wann immer Du im eingestellten Intervall nicht 'getrunken' hast. Antippen der Benachrichtungung öffnet die App.
+
+Wenn alle 5 Gläser leer sind, erscheint keine Benachrichtigung mehr (bis Du sie selbst neu startest) – und eine Gratulations-Nachricht wird angezeigt.
