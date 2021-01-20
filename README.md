@@ -36,7 +36,7 @@ A 'Drink water!' notification like shown above will be displayed if you have not
 When all 5 glasses are empty, the notifications will no longer come (until you restart them), and a 'Congratulations' message will appear!
 
 ## Download
-[Download the APK](https://github.com/ktprograms/WaterTracker/blob/master/app/release/WaterTracker0.1.0beta.apk)
+[Download the APK](https://github.com/ktprograms/WaterTracker/blob/master/app/release/WaterTracker0.1.2beta.apk)
 
 ## Checksums (All versions)
 **V 0.1.0 Beta:**
@@ -51,6 +51,12 @@ When all 5 glasses are empty, the notifications will no longer come (until you r
 >
 >SHA1: 88fe561d635a015d816af3593e86df009e11285a
 
+**V 0.1.2 Beta:**
+
+>MD5: 3c9a796a192bf109beda90c28f1a1da1
+>
+>SHA1: 857f9f8babcacde37f9d7ccc118d9fd993c2f1c2
+
 # Changelogs
 **V 0.1.0 Beta:**
 
@@ -59,3 +65,7 @@ When all 5 glasses are empty, the notifications will no longer come (until you r
 **V 0.1.1 Beta:**
 
 >Fixed bug where 'running' text would change to 'not running' when screen is locked then unlocked
+
+**V 0.1.2 Beta:**
+
+>Converted images to SVG

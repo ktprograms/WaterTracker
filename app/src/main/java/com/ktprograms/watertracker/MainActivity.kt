@@ -53,11 +53,11 @@ class MainActivity : AppCompatActivity() {
     // Initialize arrays
     private val glassAmounts = mutableListOf(0, 0, 0, 0, 0) // 0 -> full, 4 -> empty
     private val glassLevels = listOf(
-        R.drawable.glass100,
-        R.drawable.glass75,
-        R.drawable.glass50,
-        R.drawable.glass25,
-        R.drawable.glass0
+        R.drawable.glass_100,
+        R.drawable.glass_75,
+        R.drawable.glass_50,
+        R.drawable.glass_25,
+        R.drawable.glass_0
     )
 
     // Declare other object instances
@@ -73,6 +73,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.app_icon)
+        supportActionBar?.setDisplayUseLogoEnabled(true)
 
         // Initialize views
         initViews()

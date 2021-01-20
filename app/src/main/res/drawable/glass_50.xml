@@ -1,0 +1,37 @@
+<!--
+  ~ GNU General Public License v3.0
+  ~
+  ~ Copyright (c) 2020 Toh Jeen Gie Keith
+  ~
+  ~
+  ~ This file is part of WaterTracker.
+  ~
+  ~ WaterTracker is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ WaterTracker is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with WaterTracker.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="80dp"
+    android:height="100dp"
+    android:viewportWidth="80.0"
+    android:viewportHeight="100.0">
+    <path android:fillColor="#FF0000FF"
+        android:strokeWidth="0"
+        android:strokeColor="#00000000"
+        android:pathData="M16,50 L64,50 L60,90 L20,90 L16,50 Z" />
+
+    <path android:fillColor="#00FFFFFF"
+        android:strokeWidth="3"
+        android:strokeColor="#FF000000"
+        android:pathData="M10,10 L70,10 L60,90 L20,90 L10,10 Z" />
+</vector>

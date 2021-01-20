@@ -38,45 +38,75 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
         <ImageButton
             android:id="@+id/glass1"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/glass100"
+            android:layout_weight="0"
+            android:background="@drawable/glass_100"
             android:scaleType="fitXY" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/glass2"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/glass100"
+            android:layout_weight="0"
+            android:background="@drawable/glass_100"
             android:scaleType="fitXY" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/glass3"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/glass100"
+            android:layout_weight="0"
+            android:background="@drawable/glass_100"
             android:scaleType="fitXY" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/glass4"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/glass100"
+            android:layout_weight="0"
+            android:background="@drawable/glass_100"
             android:scaleType="fitXY" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <ImageButton
             android:id="@+id/glass5"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
-            android:background="@drawable/glass100"
+            android:layout_weight="0"
+            android:background="@drawable/glass_100"
             android:scaleType="fitXY" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
     </LinearLayout>
 
