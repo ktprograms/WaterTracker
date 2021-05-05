@@ -28,6 +28,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
     // Initialize arrays
     private val glassAmounts = mutableListOf(0, 0, 0, 0, 0) // 0 -> full, 4 -> empty
-    private val glassLevels = listOf(
+    private val glassImages = listOf(
         R.drawable.glass_100,
         R.drawable.glass_75,
         R.drawable.glass_50,
@@ -73,6 +74,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Put the app icon in the app bar
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setIcon(R.drawable.app_icon)
         supportActionBar?.setDisplayUseLogoEnabled(true)
@@ -219,11 +222,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        glass1!!.setBackgroundResource(glassLevels[glassAmounts[0]])
-        glass2!!.setBackgroundResource(glassLevels[glassAmounts[1]])
-        glass3!!.setBackgroundResource(glassLevels[glassAmounts[2]])
-        glass4!!.setBackgroundResource(glassLevels[glassAmounts[3]])
-        glass5!!.setBackgroundResource(glassLevels[glassAmounts[4]])
+        glass1!!.setBackgroundResource(glassImages[glassAmounts[0]])
+        glass2!!.setBackgroundResource(glassImages[glassAmounts[1]])
+        glass3!!.setBackgroundResource(glassImages[glassAmounts[2]])
+        glass4!!.setBackgroundResource(glassImages[glassAmounts[3]])
+        glass5!!.setBackgroundResource(glassImages[glassAmounts[4]])
         minsEditText!!.setText("$wait")
         val displayText = if (running) "" else " not"
         alarmTextView!!.text = "Water alarm is currently$displayText running"
@@ -253,7 +256,7 @@ class MainActivity : AppCompatActivity() {
             4 -> glass5
             else -> null
         }
-        glass!!.setBackgroundResource(glassLevels[glassAmounts[i]])
+        glass!!.setBackgroundResource(glassImages[glassAmounts[i]])
         setLLVisibilities()
 
         // Update the shared preferences

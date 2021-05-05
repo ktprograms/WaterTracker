@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ GNU General Public License v3.0
   ~
@@ -28,10 +29,10 @@
     <path android:fillColor="#FF0000FF"
         android:strokeWidth="0"
         android:strokeColor="#00000000"
-        android:pathData="M18,70 L62,70 L60,90 L20,90 L18,70 Z" />
+        android:pathData="M18,70  L62,70  L60,90  L20,90  L18,70  Z" />
 
     <path android:fillColor="#00FFFFFF"
         android:strokeWidth="3"
-        android:strokeColor="#FF000000"
-        android:pathData="M10,10 L70,10 L60,90 L20,90 L10,10 Z" />
+        android:strokeColor="#FF777777"
+        android:pathData="M10,10  L70,10  L60,90  L20,90  L10,10  Z" />
 </vector>

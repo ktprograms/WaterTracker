@@ -130,7 +130,7 @@
             android:layout_weight="3"
             android:gravity="center|center_vertical"
             android:text="Congratulations! You have drank all 5 glasses for today!"
-            android:textColor="@android:color/black"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="40sp" />
 
         <Button
@@ -158,7 +158,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Notify after "
-            android:textColor="@android:color/black"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="24dp" />
 
         <EditText
@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="minutes of not drinking."
-            android:textColor="@android:color/black"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="24dp" />
 
         <Button
@@ -192,11 +192,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Water alarm is currently running"
-        android:textColor="@android:color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/linearLayout"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

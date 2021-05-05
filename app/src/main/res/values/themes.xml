@@ -25,7 +25,7 @@
     <style name="Theme.WaterTracker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#00BFFF</item>
-        <item name="colorPrimaryVariant">#00BFFF</item>
+        <item name="colorPrimaryVariant">#0099FF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -34,5 +34,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+    
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="titleTextStyle">@style/MyTitleTextStyle</item>
+    </style>
+    
+    <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Title">
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>
