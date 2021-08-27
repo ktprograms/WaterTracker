@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ GNU General Public License v3.0
   ~
   ~ Copyright (c) 2020 Toh Jeen Gie Keith
@@ -132,9 +133,10 @@
                 android:layout_weight="3"
                 android:autoSizeTextType="uniform"
                 android:gravity="center|center_vertical"
+                android:paddingHorizontal="16dp"
                 android:text="Congratulations! You have drank all 5 glasses for today!"
                 android:textColor="?android:attr/textColorPrimary"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/resetBtn"
                 app:layout_constraintStart_toStartOf="parent"
@@ -144,11 +146,11 @@
                 android:id="@+id/resetBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 android:text="Reset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/congratsTextView"
-                app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -174,17 +176,17 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:autoSizeMaxTextSize="24sp"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="Notify after "
                 android:textColor="?android:attr/textColorPrimary"
-                android:autoSizeMaxTextSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/minsEditText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.2"/>
+                app:layout_constraintWidth_percent="0.2" />
 
             <EditText
                 android:id="@+id/minsEditText"
@@ -205,12 +207,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:autoSizeMaxTextSize="24sp"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="minutes of not drinking."
                 android:textColor="?android:attr/textColorPrimary"
-                android:autoSizeMaxTextSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/okBtn"
                 app:layout_constraintStart_toEndOf="@+id/minsEditText"
@@ -219,15 +221,15 @@
 
             <Button
                 android:id="@+id/okBtn"
-                android:layout_width="0dp"
-                app:layout_constraintWidth_percent="0.15"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="OK"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.15" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -237,12 +239,15 @@
         android:id="@+id/alarmTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:autoSizeMaxTextSize="40sp"
-        app:autoSizeTextType="uniform"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:maxLines="1"
         android:text="Water alarm is currently running"
         android:textColor="?android:attr/textColorPrimary"
+        app:autoSizeMaxTextSize="40sp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
