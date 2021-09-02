@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     )
 
     // Other object references
-    private val prefs: SharedPreferences by lazy { getPreferences(MODE_PRIVATE) }
+    private val prefs: SharedPreferences by lazy { getSharedPreferences("Prefs", MODE_PRIVATE) }
     private val alarmManager: AlarmManager by lazy { getSystemService(ALARM_SERVICE) as AlarmManager }
     private val alarmIntent: Intent by lazy { Intent(applicationContext, AlarmReceiver::class.java) }
     private val pendingIntent: PendingIntent by lazy { PendingIntent.getBroadcast(applicationContext, 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE) }
@@ -85,13 +85,6 @@ class MainActivity : AppCompatActivity() {
 
         // Read the shared preferences
         readPrefs()
-
-        // Check if app started from the notification
-        if (intent.hasExtra("com.ktprograms.watertracker.NOTIFEXTRA")) {
-            putRunning(false)
-            alarmTextView.text = getString(R.string.not_running)
-            intent.removeExtra("com.ktprograms.watertracker.NOTIFEXTRA")
-        }
 
         // Set glass onClick listeners
         glass1.setOnClickListener {
