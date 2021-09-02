@@ -109,9 +109,8 @@ class MainActivity : AppCompatActivity() {
         resetBtn.setOnClickListener {
             // 'Refill' all glasses
             writeAllGlassPrefs()
-            for (i in 0..4) {
-                glassAmounts[i] = 0
-            }
+            glassAmounts.fill(0)
+
             updateUI()
 
             startAlarm()
@@ -122,10 +121,12 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s!!.isNotEmpty()) {
-                    val editor = prefs.edit()
-                    editor.putInt("wait", s.toString().toInt())
-                    editor.apply()
+                s?.let {
+                    if (it.isNotEmpty()) {
+                        val editor = prefs.edit()
+                        editor.putInt("wait", it.toString().toInt())
+                        editor.apply()
+                    }
                 }
             }
 
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name: CharSequence = "Drink water!!!"
+            val name: CharSequence = getString(R.string.drink_water)
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("WATER_TRACKER", name, importance)
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
@@ -145,11 +146,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun readPrefs() {
         // Read prefs
-        glassAmounts[0] = prefs.getInt("g1", 0)
-        glassAmounts[1] = prefs.getInt("g2", 0)
-        glassAmounts[2] = prefs.getInt("g3", 0)
-        glassAmounts[3] = prefs.getInt("g4", 0)
-        glassAmounts[4] = prefs.getInt("g5", 0)
+        glassAmounts[0] = prefs.getInt("g0", 0)
+        glassAmounts[1] = prefs.getInt("g1", 0)
+        glassAmounts[2] = prefs.getInt("g2", 0)
+        glassAmounts[3] = prefs.getInt("g3", 0)
+        glassAmounts[4] = prefs.getInt("g4", 0)
         wait = prefs.getInt("wait", 0)
         running = prefs.getBoolean("running", false)
 
@@ -157,28 +158,26 @@ class MainActivity : AppCompatActivity() {
         updateUI()
     }
 
-    // i is the glassAmount index
-    private fun writePrefs(i: Int) {
-        val i1 = i + 1
+    private fun writeGlassAmount(glassIndex: Int) {
         val editor = prefs.edit()
-        editor.putInt("g$i1", glassAmounts[i])
+        editor.putInt("g$glassIndex", glassAmounts[glassIndex])
         editor.apply()
     }
 
     // Sets all glass levels to 0 (full)
     private fun writeAllGlassPrefs() {
         val editor = prefs.edit()
+        editor.putInt("g0", 0)
         editor.putInt("g1", 0)
         editor.putInt("g2", 0)
         editor.putInt("g3", 0)
         editor.putInt("g4", 0)
-        editor.putInt("g5", 0)
         editor.apply()
     }
 
-    private fun putRunning(b: Boolean) {
+    private fun putRunning(running: Boolean) {
         val editor = prefs.edit()
-        editor.putBoolean("running", b)
+        editor.putBoolean("running", running)
         editor.apply()
     }
 
@@ -208,6 +207,8 @@ class MainActivity : AppCompatActivity() {
         // reset the alarm if all glasses aren't empty
         if (allNotEmpty()) {
             startAlarm()
+        } else if (allEmpty()) {
+            cancelAlarm()
         }
 
         // Update the UI
@@ -219,18 +220,18 @@ class MainActivity : AppCompatActivity() {
             4 -> glass5
             else -> null
         }
-        glass!!.setBackgroundResource(glassImages[glassAmounts[glassIndex]])
+        glass?.setBackgroundResource(glassImages[glassAmounts[glassIndex]])
+
         setLLVisibilities()
 
         // Update the shared preferences
-        writePrefs(glassIndex)
+        writeGlassAmount(glassIndex)
     }
 
     private fun setLLVisibilities() {
         if (allEmpty()) {
             congratsLinearLayout.visibility = View.VISIBLE
             timeLinearLayout.visibility = View.INVISIBLE
-            cancelAlarm()
         } else {
             congratsLinearLayout.visibility = View.INVISIBLE
             timeLinearLayout.visibility = View.VISIBLE
@@ -255,13 +256,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun startAlarm() {
         try {
+            // Stop the alarm if there was one
+            cancelAlarm()
+
+            // Calculate wait time in millis
             val wait = minsEditText.text.toString().toInt()
             val millis = System.currentTimeMillis() + (wait * 1000 * 60)
+
+            // Start the alarm
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
             } else {
                 alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
             }
+
+            // Update UI and shared preferences
             putRunning(true)
             alarmTextView.text = getString(R.string.currently_running)
         } catch (e: NumberFormatException) {
