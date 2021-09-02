@@ -28,7 +28,6 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
@@ -95,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         // Check if app started from the notification
         if (intent.hasExtra("com.ktprograms.watertracker.NOTIFEXTRA")) {
             putRunning(false)
-            alarmTextView!!.text = "Water alarm is currently not running"
+            alarmTextView!!.text = getString(R.string.not_running)
             intent.removeExtra("com.ktprograms.watertracker.NOTIFEXTRA")
         }
 
@@ -228,8 +227,11 @@ class MainActivity : AppCompatActivity() {
         glass4!!.setBackgroundResource(glassImages[glassAmounts[3]])
         glass5!!.setBackgroundResource(glassImages[glassAmounts[4]])
         minsEditText!!.setText("$wait")
-        val displayText = if (running) "" else " not"
-        alarmTextView!!.text = "Water alarm is currently$displayText running"
+        if (running) {
+            alarmTextView!!.text = getString(R.string.currently_running)
+        } else {
+            alarmTextView!!.text = getString(R.string.not_running)
+        }
         setLLVisibilities()
     }
 
@@ -299,12 +301,12 @@ class MainActivity : AppCompatActivity() {
             alarmManager!!.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
         }
         putRunning(true)
-        alarmTextView!!.text = "Water alarm is currently running"
+        alarmTextView!!.text = getString(R.string.currently_running)
     }
 
     private fun cancelAlarm() {
         alarmManager!!.cancel(pendingIntent)
         putRunning(false)
-        alarmTextView!!.text = "Water alarm is currently not running"
+        alarmTextView!!.text = getString(R.string.not_running)
     }
 }

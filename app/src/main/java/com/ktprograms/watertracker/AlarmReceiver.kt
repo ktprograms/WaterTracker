@@ -38,7 +38,7 @@ class AlarmReceiver : BroadcastReceiver() {
             PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT)
         val builder = NotificationCompat.Builder(context, "WATER_TRACKER")
             .setSmallIcon(R.drawable.app_icon)
-            .setContentTitle("Drink water!!!")
+            .setContentTitle(context.getString(R.string.drink_water))
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

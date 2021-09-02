@@ -22,4 +22,14 @@
 
 <resources>
     <string name="app_name">WaterTracker</string>
+
+    <string name="congratulations">Congratulations! You have drank all 5 glasses for today!</string>
+    <string name="reset">Reset</string>
+    <string name="notify_after">Notify after </string>
+    <string name="how_many">how many?</string>
+    <string name="mins_not_drinking">minutes of not drinking.</string>
+    <string name="ok">OK</string>
+    <string name="currently_running">Water alarm is currently running</string>
+    <string name="not_running">Water alarm is currently not running</string>
+    <string name="drink_water">Drink water!!!</string>
 </resources>
