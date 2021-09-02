@@ -88,19 +88,19 @@ class MainActivity : AppCompatActivity() {
 
         // Set glass onClick listeners
         glass1.setOnClickListener {
-            onClick(0)
+            glassClicked(0)
         }
         glass2.setOnClickListener {
-            onClick(1)
+            glassClicked(1)
         }
         glass3.setOnClickListener {
-            onClick(2)
+            glassClicked(2)
         }
         glass4.setOnClickListener {
-            onClick(3)
+            glassClicked(3)
         }
         glass5.setOnClickListener {
-            onClick(4)
+            glassClicked(4)
         }
 
         // Set Ok and Reset Button onClick listeners
@@ -198,13 +198,12 @@ class MainActivity : AppCompatActivity() {
         setLLVisibilities()
     }
 
-    // i is the glassAmount index
-    private fun onClick(i: Int) {
+    private fun glassClicked(glassIndex: Int) {
         // Animate water level decreasing (and resetting after empty)
-        glassAmounts[i] = if (glassAmounts[i] == 4) {
+        glassAmounts[glassIndex] = if (glassAmounts[glassIndex] == 4) {
             0
         } else {
-            glassAmounts[i] + 1
+            glassAmounts[glassIndex] + 1
         }
 
         // reset the alarm if all glasses aren't empty
@@ -213,7 +212,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Update the UI
-        val glass = when (i) {
+        val glass = when (glassIndex) {
             0 -> glass1
             1 -> glass2
             2 -> glass3
@@ -221,11 +220,11 @@ class MainActivity : AppCompatActivity() {
             4 -> glass5
             else -> null
         }
-        glass!!.setBackgroundResource(glassImages[glassAmounts[i]])
+        glass!!.setBackgroundResource(glassImages[glassAmounts[glassIndex]])
         setLLVisibilities()
 
         // Update the shared preferences
-        writePrefs(i)
+        writePrefs(glassIndex)
     }
 
     private fun setLLVisibilities() {
