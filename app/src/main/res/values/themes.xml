@@ -1,7 +1,7 @@
 <!--
   ~ GNU General Public License v3.0
   ~
-  ~ Copyright (c) 2020 Toh Jeen Gie Keith
+  ~ Copyright (c) 2020-2021 Toh Jeen Gie Keith
   ~
   ~
   ~ This file is part of WaterTracker.
@@ -36,11 +36,11 @@
         <!-- Customize your theme here. -->
         <item name="actionBarStyle">@style/MyActionBar</item>
     </style>
-    
+
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="titleTextStyle">@style/MyTitleTextStyle</item>
     </style>
-    
+
     <style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Title">
         <item name="android:textSize">20sp</item>
     </style>

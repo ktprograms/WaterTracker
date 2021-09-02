@@ -1,7 +1,7 @@
 /*
  * GNU General Public License v3.0
  *
- * Copyright (c) 2020 Toh Jeen Gie Keith
+ * Copyright (c) 2020-2021 Toh Jeen Gie Keith
  *
  *
  * This file is part of WaterTracker.
