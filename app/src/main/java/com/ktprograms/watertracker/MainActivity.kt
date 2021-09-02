@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity() {
         prefs = getPreferences(MODE_PRIVATE)
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
         alarmIntent = Intent(applicationContext, AlarmReceiver::class.java)
-        pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, alarmIntent, 0)
+        pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE)
     }
 
     private fun createNotificationChannel() {

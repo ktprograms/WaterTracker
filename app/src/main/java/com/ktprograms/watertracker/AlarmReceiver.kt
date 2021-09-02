@@ -35,7 +35,7 @@ class AlarmReceiver : BroadcastReceiver() {
         i.putExtra("com.ktprograms.watertracker.NOTIFEXTRA", "")
         i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         val pendingIntent =
-            PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getActivity(context, 0, i, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val builder = NotificationCompat.Builder(context, "WATER_TRACKER")
             .setSmallIcon(R.drawable.app_icon)
             .setContentTitle(context.getString(R.string.drink_water))
