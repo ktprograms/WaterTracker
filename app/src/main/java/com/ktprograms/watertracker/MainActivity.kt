@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity() {
             val name: CharSequence = "Drink water!!!"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel("WATER_TRACKER", name, importance)
-            val notificationManager = getSystemService(NotificationManager::class.java)
+            val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
