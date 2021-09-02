@@ -38,18 +38,18 @@ import androidx.appcompat.app.AppCompatActivity
 import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
-    // Declare views
-    private var glass1: ImageButton? = null
-    private var glass2: ImageButton? = null
-    private var glass3: ImageButton? = null
-    private var glass4: ImageButton? = null
-    private var glass5: ImageButton? = null
-    private var okBtn: Button? = null
-    private var resetBtn: Button? = null
-    private var timeLinearLayout: LinearLayout? = null
-    private var congratsLinearLayout: LinearLayout? = null
-    private var minsEditText: EditText? = null
-    private var alarmTextView: TextView? = null
+    // View references
+    private val glass1: ImageButton by lazy { findViewById(R.id.glass1) }
+    private val glass2: ImageButton by lazy { findViewById(R.id.glass2) }
+    private val glass3: ImageButton by lazy { findViewById(R.id.glass3) }
+    private val glass4: ImageButton by lazy { findViewById(R.id.glass4) }
+    private val glass5: ImageButton by lazy { findViewById(R.id.glass5) }
+    private val okBtn: Button by lazy { findViewById(R.id.okBtn) }
+    private val resetBtn: Button by lazy { findViewById(R.id.resetBtn) }
+    private val timeLinearLayout: LinearLayout by lazy { findViewById(R.id.timeLinearLayout) }
+    private val congratsLinearLayout: LinearLayout by lazy { findViewById(R.id.congratsLinearLayout) }
+    private val minsEditText: EditText by lazy { findViewById(R.id.minsEditText) }
+    private val alarmTextView: TextView by lazy { findViewById(R.id.alarmTextView) }
 
     // Initialize arrays
     private val glassAmounts = mutableListOf(0, 0, 0, 0, 0) // 0 -> full, 4 -> empty
@@ -61,11 +61,11 @@ class MainActivity : AppCompatActivity() {
         R.drawable.glass_0
     )
 
-    // Declare other object instances
-    private var prefs: SharedPreferences? = null
-    private var alarmManager: AlarmManager? = null
-    private var alarmIntent: Intent? = null
-    private var pendingIntent: PendingIntent? = null
+    // Other object references
+    private val prefs: SharedPreferences by lazy { getPreferences(MODE_PRIVATE) }
+    private val alarmManager: AlarmManager by lazy { getSystemService(ALARM_SERVICE) as AlarmManager }
+    private val alarmIntent: Intent by lazy { Intent(applicationContext, AlarmReceiver::class.java) }
+    private val pendingIntent: PendingIntent by lazy { PendingIntent.getBroadcast(applicationContext, 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE) }
 
     // Other variables / constants
     private var wait = 0
@@ -80,12 +80,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.setIcon(R.drawable.app_icon)
         supportActionBar?.setDisplayUseLogoEnabled(true)
 
-        // Initialize views
-        initViews()
-
-        // Initialize other object instances
-        initStuff()
-
         // Create a notification channel (For Android O [28] and above only)
         createNotificationChannel()
 
@@ -95,32 +89,32 @@ class MainActivity : AppCompatActivity() {
         // Check if app started from the notification
         if (intent.hasExtra("com.ktprograms.watertracker.NOTIFEXTRA")) {
             putRunning(false)
-            alarmTextView!!.text = getString(R.string.not_running)
+            alarmTextView.text = getString(R.string.not_running)
             intent.removeExtra("com.ktprograms.watertracker.NOTIFEXTRA")
         }
 
         // Set glass onClick listeners
-        glass1!!.setOnClickListener {
+        glass1.setOnClickListener {
             onClick(0)
         }
-        glass2!!.setOnClickListener {
+        glass2.setOnClickListener {
             onClick(1)
         }
-        glass3!!.setOnClickListener {
+        glass3.setOnClickListener {
             onClick(2)
         }
-        glass4!!.setOnClickListener {
+        glass4.setOnClickListener {
             onClick(3)
         }
-        glass5!!.setOnClickListener {
+        glass5.setOnClickListener {
             onClick(4)
         }
 
         // Set Ok and Reset Button onClick listeners
-        okBtn!!.setOnClickListener {
+        okBtn.setOnClickListener {
             startAlarm()
         }
-        resetBtn!!.setOnClickListener {
+        resetBtn.setOnClickListener {
             // 'Refill' all glasses
             writeAllGlassPrefs()
             for (i in 0..4) {
@@ -132,12 +126,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Set onTextChanged listener for minsEditText
-        minsEditText!!.addTextChangedListener(object : TextWatcher {
+        minsEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s!!.isNotEmpty()) {
-                    val editor = prefs!!.edit()
+                    val editor = prefs.edit()
                     editor.putInt("wait", s.toString().toInt())
                     editor.apply()
                 }
@@ -145,31 +139,6 @@ class MainActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
-    }
-
-    private fun initViews() {
-        glass1 = findViewById(R.id.glass1)
-        glass2 = findViewById(R.id.glass2)
-        glass3 = findViewById(R.id.glass3)
-        glass4 = findViewById(R.id.glass4)
-        glass5 = findViewById(R.id.glass5)
-
-        okBtn = findViewById(R.id.okBtn)
-        resetBtn = findViewById(R.id.resetBtn)
-
-        timeLinearLayout = findViewById(R.id.timeLinearLayout)
-        congratsLinearLayout = findViewById(R.id.congratsLinearLayout)
-
-        minsEditText = findViewById(R.id.minsEditText)
-
-        alarmTextView = findViewById(R.id.alarmTextView)
-    }
-
-    private fun initStuff() {
-        prefs = getPreferences(MODE_PRIVATE)
-        alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
-        alarmIntent = Intent(applicationContext, AlarmReceiver::class.java)
-        pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, alarmIntent, PendingIntent.FLAG_IMMUTABLE)
     }
 
     private fun createNotificationChannel() {
@@ -184,13 +153,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun readPrefs() {
         // Read prefs
-        glassAmounts[0] = prefs!!.getInt("g1", 0)
-        glassAmounts[1] = prefs!!.getInt("g2", 0)
-        glassAmounts[2] = prefs!!.getInt("g3", 0)
-        glassAmounts[3] = prefs!!.getInt("g4", 0)
-        glassAmounts[4] = prefs!!.getInt("g5", 0)
-        wait = prefs!!.getInt("wait", 0)
-        running = prefs!!.getBoolean("running", false)
+        glassAmounts[0] = prefs.getInt("g1", 0)
+        glassAmounts[1] = prefs.getInt("g2", 0)
+        glassAmounts[2] = prefs.getInt("g3", 0)
+        glassAmounts[3] = prefs.getInt("g4", 0)
+        glassAmounts[4] = prefs.getInt("g5", 0)
+        wait = prefs.getInt("wait", 0)
+        running = prefs.getBoolean("running", false)
 
         // Update UI from read prefs
         updateUI()
@@ -199,14 +168,14 @@ class MainActivity : AppCompatActivity() {
     // i is the glassAmount index
     private fun writePrefs(i: Int) {
         val i1 = i + 1
-        val editor = prefs!!.edit()
+        val editor = prefs.edit()
         editor.putInt("g$i1", glassAmounts[i])
         editor.apply()
     }
 
     // Sets all glass levels to 0 (full)
     private fun writeAllGlassPrefs() {
-        val editor = prefs!!.edit()
+        val editor = prefs.edit()
         editor.putInt("g1", 0)
         editor.putInt("g2", 0)
         editor.putInt("g3", 0)
@@ -216,22 +185,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun putRunning(b: Boolean) {
-        val editor = prefs!!.edit()
+        val editor = prefs.edit()
         editor.putBoolean("running", b)
         editor.apply()
     }
 
     private fun updateUI() {
-        glass1!!.setBackgroundResource(glassImages[glassAmounts[0]])
-        glass2!!.setBackgroundResource(glassImages[glassAmounts[1]])
-        glass3!!.setBackgroundResource(glassImages[glassAmounts[2]])
-        glass4!!.setBackgroundResource(glassImages[glassAmounts[3]])
-        glass5!!.setBackgroundResource(glassImages[glassAmounts[4]])
-        minsEditText!!.setText("$wait")
+        glass1.setBackgroundResource(glassImages[glassAmounts[0]])
+        glass2.setBackgroundResource(glassImages[glassAmounts[1]])
+        glass3.setBackgroundResource(glassImages[glassAmounts[2]])
+        glass4.setBackgroundResource(glassImages[glassAmounts[3]])
+        glass5.setBackgroundResource(glassImages[glassAmounts[4]])
+        minsEditText.setText("$wait")
         if (running) {
-            alarmTextView!!.text = getString(R.string.currently_running)
+            alarmTextView.text = getString(R.string.currently_running)
         } else {
-            alarmTextView!!.text = getString(R.string.not_running)
+            alarmTextView.text = getString(R.string.not_running)
         }
         setLLVisibilities()
     }
@@ -268,12 +237,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun setLLVisibilities() {
         if (allEmpty()) {
-            congratsLinearLayout!!.visibility = View.VISIBLE
-            timeLinearLayout!!.visibility = View.INVISIBLE
+            congratsLinearLayout.visibility = View.VISIBLE
+            timeLinearLayout.visibility = View.INVISIBLE
             cancelAlarm()
         } else {
-            congratsLinearLayout!!.visibility = View.INVISIBLE
-            timeLinearLayout!!.visibility = View.VISIBLE
+            congratsLinearLayout.visibility = View.INVISIBLE
+            timeLinearLayout.visibility = View.VISIBLE
         }
     }
 
@@ -295,23 +264,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun startAlarm() {
         try {
-            val wait = minsEditText!!.text.toString().toInt()
+            val wait = minsEditText.text.toString().toInt()
             val millis = System.currentTimeMillis() + (wait * 1000 * 60)
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-                alarmManager!!.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
             } else {
-                alarmManager!!.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
+                alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
             }
             putRunning(true)
-            alarmTextView!!.text = getString(R.string.currently_running)
+            alarmTextView.text = getString(R.string.currently_running)
         } catch (e: NumberFormatException) {
             Toast.makeText(applicationContext, getString(R.string.no_empty_minutes), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun cancelAlarm() {
-        alarmManager!!.cancel(pendingIntent)
+        alarmManager.cancel(pendingIntent)
         putRunning(false)
-        alarmTextView!!.text = getString(R.string.not_running)
+        alarmTextView.text = getString(R.string.not_running)
     }
 }
