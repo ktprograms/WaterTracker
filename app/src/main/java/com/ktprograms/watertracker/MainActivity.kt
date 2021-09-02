@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
             // 'Refill' all glasses
             writeAllGlassPrefs()
             for (i in 0..4) {
-                glassAmounts.set(i, 0)
+                glassAmounts[i] = 0
             }
             updateUI()
 
