@@ -35,7 +35,6 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
     // View references
