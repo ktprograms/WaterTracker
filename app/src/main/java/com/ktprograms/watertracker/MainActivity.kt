@@ -35,6 +35,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import java.lang.NumberFormatException
 
 class MainActivity : AppCompatActivity() {
     // Declare views
@@ -293,15 +294,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startAlarm() {
-        val wait = minsEditText!!.text.toString().toInt()
-        val millis = System.currentTimeMillis() + (wait * 1000 * 60)
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
-            alarmManager!!.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
-        } else {
-            alarmManager!!.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
+        try {
+            val wait = minsEditText!!.text.toString().toInt()
+            val millis = System.currentTimeMillis() + (wait * 1000 * 60)
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
+                alarmManager!!.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
+            } else {
+                alarmManager!!.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, millis, pendingIntent)
+            }
+            putRunning(true)
+            alarmTextView!!.text = getString(R.string.currently_running)
+        } catch (e: NumberFormatException) {
+            Toast.makeText(applicationContext, getString(R.string.no_empty_minutes), Toast.LENGTH_SHORT).show()
         }
-        putRunning(true)
-        alarmTextView!!.text = getString(R.string.currently_running)
     }
 
     private fun cancelAlarm() {
