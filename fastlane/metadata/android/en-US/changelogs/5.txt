@@ -1,0 +1,1 @@
+Fixed overlapping text (thanks to yuhuitech on GitHub), miscellaneous improvements

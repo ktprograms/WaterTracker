@@ -1,5 +1,12 @@
 # Changelogs
 
+### V 0.1.4 Beta
+- Fixed overlapping text (thanks to yuhuitech on GitHub), miscellaneous improvements
+
+>MD5: 3b62fd4d9ea0dfd30f95ce2b87cbf9ab
+>
+>SHA1: 066b75934280f5962be44fd8343ef0f395cfc6d1
+
 ### V 0.1.3 Beta
 - Fixed dark mode visual issues.
 
